@@ -25,5 +25,5 @@ steps:
   displayName: Build and Push
   inputs:
     command: buildAndPush
-    repository: spring-demo
+    repository: sambit15k/springdemo
     tags: latest
