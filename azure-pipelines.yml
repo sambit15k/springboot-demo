@@ -6,10 +6,11 @@ pool:
 
 steps:
 - task: Docker@2
-  displayName: Login to ACR
+  displayName: Login to Docker Hub
   inputs:
     command: login
-    containerRegistry: acrRegistryServiceConnection1
+    containerRegistry: azurecontainerconnection
+    
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
