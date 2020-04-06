@@ -14,7 +14,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(agent.builddirectory)'
-    Contents: 'spring-demo-deployment.yaml'
+    Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)'
 # - task: Maven@3
 #   inputs:
