@@ -10,26 +10,25 @@ steps:
   inputs:
     command: login
     containerRegistry: azurecontainerconnection
-    
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: false
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package -Dmaven.test.skip=true'
-- task: Docker@2
-  displayName: Build and Push
-  inputs:
-    command: buildAndPush
-    repository: sambit15k/springdemo
-    tags: latest
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'springboot-demo/'
     Contents: 'spring-demo-deployment.yaml'
     TargetFolder: '$(build.artifactstagingdirectory)'
+# - task: Maven@3
+#   inputs:
+#     mavenPomFile: 'pom.xml'
+#     mavenOptions: '-Xmx3072m'
+#     javaHomeOption: 'JDKVersion'
+#     jdkVersionOption: '1.8'
+#     jdkArchitectureOption: 'x64'
+#     publishJUnitResults: false
+#     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#     goals: 'package -Dmaven.test.skip=true'
+# - task: Docker@2
+#   displayName: Build and Push
+#   inputs:
+#     command: buildAndPush
+#     repository: sambit15k/springdemo
+#     tags: latest
+
