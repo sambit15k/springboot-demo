@@ -30,6 +30,6 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'https://github.com/sambit15k/springboot-demo/blob/master/spring-demo-deployment.yaml'
+    SourceFolder: 'springboot-demo'
     Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)'
