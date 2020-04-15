@@ -39,3 +39,27 @@ steps:
     repository: sambit15k/springdemo
     tags: latest
 
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'k8s'
+    namespace: 'default'
+    command: 'apply'
+    useConfigurationFile: true
+    configurationType: 'inline'
+    inline: |
+      steps:
+      - task: Kubernetes@0
+        displayName: 'kubectl apply'
+        inputs:
+          kubernetesServiceConnection: k8s
+          namespace: default
+          command: apply
+          useConfigurationFile: true
+          configuration: '$(System.DefaultWorkingDirectory)/_sambit15k.springboot-demo/drop/s/spring-demo-deployment.yaml'
+          containerRegistryType: 'Container Registry'
+          dockerRegistryConnection: azurecontainerconnection
+          forceUpdate: false
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
+    azureSubscriptionEndpointForSecrets: 'azureprinciple'
